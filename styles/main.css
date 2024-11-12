@@ -1,0 +1,58 @@
+:root{
+  --color-primary: #f9f9f9;
+  --color-secondary: #f5f5f5;
+  --color-acent:;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-grey: #f5f5f5;
+  
+  --border-radius: 0.25rem;
+  --padding: 20px;
+  --margin: 1rem;
+  
+  --font-family: 'Roboto', sans-serif;
+  --font-size: 1rem;
+  --font-weight: 400;
+  --line-height: 1.5;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+  background-color: var(--color-primary);
+  color: var(--color-black);
+}
+
+.filter-modal{
+  display: none;
+  width: 100%;
+  height: auto;
+  padding: var(--padding);
+  background-color: rgb(255, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  transition: all 0.3s ease-in-out;
+}
+.filter-modal_content{
+  margin: 10% auto;
+  width: 50%;
+  height: auto;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: var(--padding);
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+#close-filter{
+  font-size: 40px;
+}
