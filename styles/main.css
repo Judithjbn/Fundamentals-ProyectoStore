@@ -31,11 +31,10 @@ body{
 }
 
 .filter-modal{
-  display: none;
   width: 100%;
   height: auto;
   padding: var(--padding);
-  background-color: rgb(255, 0, 0, 0.5);
+  background-color: rgba(54, 23, 23, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
