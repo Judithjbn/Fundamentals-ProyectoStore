@@ -1,4 +1,4 @@
-const productos = [
+export const products = [
   {
     id: 1,
     nombre: 'New Balance 530 Mujer',
