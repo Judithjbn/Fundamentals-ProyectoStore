@@ -12,7 +12,8 @@
 <body>
   <header>
     <nav>
-      <ul>
+      <img class="nav-logo" src="/assets/logo.png" alt="logo" width="40px">
+      <ul class="nav-links">
         <li><a href="/index.html">Inicio</a></li>
         <li><a href="/pages/products.html">Productos</a></li>
         <li><a href="/pages/contact.html">Contacto</a></li>
@@ -27,7 +28,7 @@
 
   <div>
     <aside class="filters">
-      <button id="filter-btn">Mostrar filtros</button>
+      <button class="btn" id="filter-btn">Mostrar filtros</button>
       <div class="filter-modal" style="display: none;">
         <i class='bx bx-x' id="close-filter"></i>
         <div class="filter-modal_content">
@@ -48,15 +49,16 @@
             </div
         </div>
         <div class="filter-modal_buttons">
-          <button id="aplicar-filtros">Aplicar Filtros</button>
-          <button id="limpiar-filtros">Limpiar Filtros</button>
+          <button class="btn" id="aplicar-filtros">Aplicar Filtros</button>
+          <button class="btn" id="limpiar-filtros">Limpiar Filtros</button>
         </div>
     </aside>
     <main class="products"">
       <section class=" products-banner">
       <h1>Fundamentals Proyecto Store</h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, quaerat.
+        Calzado de mujer | Zapatillas y chanclas
+
       </p>
       </section>
       <section class="products-list">

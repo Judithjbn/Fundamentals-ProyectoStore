@@ -1,16 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Abhaya+Libre:wght@400;500;600;700;800&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
 :root{
-  --color-primary: #f9f9f9;
-  --color-secondary: #f5f5f5;
-  --color-acent:;
+  --color-primary: #fdc500;
+  --color-secondary: #031325;
+  --color-acent: #ff6700;
   --color-black: #000;
   --color-white: #fff;
-  --color-grey: #f5f5f5;
+  --color-grey: #a5a5a5;
   
   --border-radius: 0.25rem;
   --padding: 20px;
   --margin: 1rem;
   
-  --font-family: 'Roboto', sans-serif;
+  --font-family: 'Host Grotesk', sans-serif;
   --font-size: 1rem;
   --font-weight: 400;
   --line-height: 1.5;
@@ -26,15 +27,68 @@ body{
   font-size: var(--font-size);
   font-weight: var(--font-weight);
   line-height: var(--line-height);
-  background-color: var(--color-primary);
   color: var(--color-black);
+}
+
+nav{
+  display: flex;
+  background-color: var(--color-secondary);
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.nav-logo{
+  padding: 0px;
+}
+.nav-links{
+  display: flex;
+  list-style: none;
+  gap: var(--margin);
+}
+.nav-links li a{
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: 1.0rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+.nav-links li a:hover{
+  color: var(--color-acent);
+}
+
+aside{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;	
+}
+.btn{
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-secondary);
+  font-size: 14px;
+  height: 38px;
+  margin-bottom: 20px;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background-image: linear-gradient(180deg,#fff,#f5f5fa);
+  box-shadow: 0 4px 11px 0 rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%);
+  transition: all .2s ease-out;
+}
+.btn:hover{ 
+  box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
 }
 
 .filter-modal{
   width: 100%;
   height: auto;
   padding: var(--padding);
-  background: linear-gradient(90deg, rgba(255,241,0,1) 0%, rgba(227,198,20,1) 35%, rgba(255,160,0,1) 100%);
+  background: url('/assets/banner-bg.jpeg');
+  background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +97,7 @@ body{
 }
 .filter-modal_content{
   height: auto;
-  background: rgba(255, 255, 255, 0.30);
+  background: rgba(255, 255, 255, 0.40);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -55,9 +109,135 @@ body{
   flex-direction: column;
 }
 #close-filter{
-  font-size: 40px;
+  margin-right: 5px;
+  font-size: 20px;
   cursor: pointer;
+  background-color: white;
+  padding: 2px;
+  border-radius: 50%;
 }
 #close-filter:hover{
+  color: var(--color-acent);
+}
+.filter-modal_content-colores{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.filter-modal_content h4{
+  font-size: 1.2rem;
+  width: 100%;
+  text-align: center;
+}
+.filter-modal_content-colores h5{
+  width: 100%;
+  font-size: 1.0rem;
+  font-weight: 500;
+  text-align: center;
+}
+input[type="checkbox"]{
+  width: 50%;
+  border-radius: 20px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--color-grey);
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+input[type="checkbox"]:focus{
+  outline: none;
+}
+label{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.3s ease-in-out;
+  font-size: 1.0rem;
+  font-weight: 400;
+  padding: 5px;
+  border-radius: 20px;
+}
+.filter-modal_content-colores label:hover{
+  background-color: var(--color-primary);
   color: var(--color-white);
+  padding: 10px;
+}
+.filter-modal_buttons{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.products-banner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  padding-top: 0px;
+}
+.products-banner h1{
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.products-banner p{
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-grey);
+}
+
+.products-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.product{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+.product:hover{
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+.product-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  border-bottom: 1px solid var(--color-grey);
+}
+.product-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.product-info h2{
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+.product-info p{
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+p.product-price{
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 5%;
 }

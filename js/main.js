@@ -26,7 +26,7 @@ const showProducts = () => {
         <h2>${product.nombre}</h2>
         <p>Marca: ${product.marca}</p>
         <p>Color: ${product.color.join(', ')}</p>
-        <p>Precio: ${product.precio}</p>
+        <p class="product-price">${product.precio}€</p>
       </div>
     `;
     productList.appendChild(productElement);
