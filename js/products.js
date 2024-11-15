@@ -19,7 +19,7 @@ export const products = [
     id: 3,
     nombre: 'New Balance 327',
     marca: 'New Balance',
-    color: ['Azul Marino', 'Gris', 'Verde'],
+    color: ['Azul', 'Gris', 'Verde'],
     precio: 130,
     imagen: '/assets/new-balance-327.webp'
   },

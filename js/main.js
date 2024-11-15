@@ -11,11 +11,11 @@ document.getElementById('close-filter').addEventListener('click', () => {
 });
 
 
-const showProducts = () => {
+const showProducts = (productsToShow = products) => {
   const productList = document.querySelector('.products-list');
   productList.innerHTML = '';
 
-  products.forEach (product => {
+  productsToShow.forEach (product => {
     const productElement = document.createElement('div');
     productElement.classList.add('product');
     productElement.innerHTML = `
@@ -32,8 +32,48 @@ const showProducts = () => {
     productList.appendChild(productElement);
 
   });
+}
+showProducts();
 
 
+const filterByColor = () => {
+  const checkboxes = document.querySelectorAll('.filter-modal_content-colors input[type="checkbox"]:checked');
+  const selectedColors = Array.from(checkboxes).map(checkbox => checkbox.value);
+  return selectedColors;
+}
+const applyFilter = () => {
+  const selectColors = filterByColor();
+  let filteredProducts = products;
+
+  if (selectColors.length > 0) {
+    filteredProducts = products.filter(product => {
+        return product.color.some(color => selectColors.includes(color));
+      });
+    }
+  showProducts(filteredProducts);
+
+  const modal = document.querySelector('.filter-modal');
+  modal.style.display = "none";
+};
+
+
+document.getElementById('aplicar-filtros').addEventListener('click', () => {
+  applyFilter();
+});
+
+const clearFilter = () => {
+  const checkboxes = document.querySelectorAll('.filter-modal_content-colors input[type="checkbox"]');
+
+  checkboxes.forEach(checkboxes => {
+    checkboxes.checked = false;
+  });
+  showProducts();
+
+    const modal = document.querySelector('.filter-modal');
+    modal.style.display = "none";
 }
 
-showProducts();
+document.getElementById('limpiar-filtros').addEventListener('click', () => {
+  clearFilter();
+});
+
