@@ -15,6 +15,29 @@ const showProducts = (productsToShow = products) => {
   const productList = document.querySelector('.products-list');
   productList.innerHTML = '';
 
+  if (productsToShow.length === 0) {
+    productList.innerHTML = '<p class="no-products">No hay productos que coincidan con los filtros seleccionados.<br>Estos son algunos productos disponibles:</p>';
+    const suggestedProducts = showSuggestProducts(3); // Obtén 3 productos aleatorios
+
+    suggestedProducts.forEach(product => {
+      const productElement = document.createElement('div');
+      productElement.classList.add('product');
+      productElement.innerHTML = `
+        <div class="product-image">
+          <img src="${product.imagen}" alt="${product.nombre}">
+        </div>
+        <div class="product-info">
+          <h2>${product.nombre}</h2>
+          <p>Marca: ${product.marca}</p>
+          <p>Color: ${product.color.join(', ')}</p>
+          <p class="product-price">${product.precio}€</p>
+        </div>
+      `;
+      productList.appendChild(productElement);
+    });
+    return;
+  }
+
   productsToShow.forEach(product => {
     const productElement = document.createElement('div');
     productElement.classList.add('product');
@@ -30,9 +53,15 @@ const showProducts = (productsToShow = products) => {
       </div>
     `;
     productList.appendChild(productElement);
-
   });
-}
+};
+
+const showSuggestProducts = (num) => {
+  const productsCopy = [...products];
+  const randomProducts = productsCopy.sort(() => 0.5 - Math.random());
+  return randomProducts.slice(0, num);
+};
+
 showProducts();
 
 
@@ -58,8 +87,8 @@ const applyFilter = () => {
       });
     }
   if (selectBrands.length > 0) {
-    filteredProducts = filteredProducts.filter(products => {
-      return selectBrands.includes(products.marca);
+    filteredProducts = filteredProducts.filter(product => {
+      return selectBrands.includes(product.marca);
     });
   }
   showProducts(filteredProducts);
@@ -76,8 +105,8 @@ document.getElementById('aplicar-filtros').addEventListener('click', () => {
 const clearFilter = () => {
   const colorCheckboxes = document.querySelectorAll('.filter-modal_content-colors input[type="checkbox"]');
 
-  colorCheckboxes.forEach(checkboxs => {
-    checkboxs.checked = false;
+  colorCheckboxes.forEach(checkboxes => {
+    checkboxes.checked = false;
   });
   const brandCheckboxes = document.querySelectorAll('.filter-modal_content-brand input[type="checkbox"]');
 
