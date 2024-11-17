@@ -1,4 +1,4 @@
-import { products } from './products.js'
+import { products } from './products.js';
 
 document.getElementById('filter-btn').addEventListener('click', () => {
   const modal = document.querySelector('.filter-modal');
@@ -15,7 +15,7 @@ const showProducts = (productsToShow = products) => {
   const productList = document.querySelector('.products-list');
   productList.innerHTML = '';
 
-  productsToShow.forEach (product => {
+  productsToShow.forEach(product => {
     const productElement = document.createElement('div');
     productElement.classList.add('product');
     productElement.innerHTML = `
@@ -41,8 +41,15 @@ const filterByColor = () => {
   const selectedColors = Array.from(checkboxes).map(checkbox => checkbox.value);
   return selectedColors;
 }
+const filterByBrand = () => {
+  const checkboxes = document.querySelectorAll('.filter-modal_content-brand input[type="checkbox"]:checked');
+  const selectedBrands = Array.from(checkboxes).map(checkbox => checkbox.value);
+  return selectedBrands;
+}
+
 const applyFilter = () => {
   const selectColors = filterByColor();
+  const selectBrands = filterByBrand();
   let filteredProducts = products;
 
   if (selectColors.length > 0) {
@@ -50,6 +57,11 @@ const applyFilter = () => {
         return product.color.some(color => selectColors.includes(color));
       });
     }
+  if (selectBrands.length > 0) {
+    filteredProducts = filteredProducts.filter(products => {
+      return selectBrands.includes(products.marca);
+    });
+  }
   showProducts(filteredProducts);
 
   const modal = document.querySelector('.filter-modal');
@@ -62,11 +74,17 @@ document.getElementById('aplicar-filtros').addEventListener('click', () => {
 });
 
 const clearFilter = () => {
-  const checkboxes = document.querySelectorAll('.filter-modal_content-colors input[type="checkbox"]');
+  const colorCheckboxes = document.querySelectorAll('.filter-modal_content-colors input[type="checkbox"]');
 
-  checkboxes.forEach(checkboxes => {
-    checkboxes.checked = false;
+  colorCheckboxes.forEach(checkboxs => {
+    checkboxs.checked = false;
   });
+  const brandCheckboxes = document.querySelectorAll('.filter-modal_content-brand input[type="checkbox"]');
+
+  brandCheckboxes.forEach(checkboxs => {
+    checkboxs.checked = false;
+  });
+
   showProducts();
 
     const modal = document.querySelector('.filter-modal');
