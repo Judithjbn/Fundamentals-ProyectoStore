@@ -127,7 +127,7 @@ aside{
 #close-filter:hover{
   color: var(--color-acent);
 }
-.filter-modal_content-colors{
+.filter-modal_content-colors, .filter-modal_content-brand{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -137,7 +137,7 @@ aside{
   width: 100%;
   text-align: center;
 }
-.filter-modal_content-colors h5{
+.filter-modal_content-colors h5, .filter-modal_content-brand h5{
   width: 100%;
   font-size: 1.0rem;
   font-weight: 500;
@@ -167,8 +167,9 @@ label{
   padding: 5px;
   border-radius: 20px;
 }
-.filter-modal_content-colors label:hover{
-  background-color: var(--color-primary);
+.filter-modal_content label:hover{
+  text-decoration: underline;
+  text-decoration-color: var(--color-acent);
   color: var(--color-white);
   padding: 10px;
 }
