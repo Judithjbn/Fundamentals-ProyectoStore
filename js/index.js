@@ -1,5 +1,42 @@
 import { products } from './products.js';
 
+// checkbox
+document.addEventListener('DOMContentLoaded',() => {
+  const colorCheckboxes = document.querySelector('.filter-modal_content-colors');
+  const brandCheckboxes = document.querySelector('.filter-modal_content-brand');
+
+  const getUniqueValues = (products, key) => {
+    if (key === 'color') {
+      return [...new Set(products.reduce((acc, product) => {
+        return acc.concat(product.color);
+      }, []))];
+    }
+    return [...new Set(products.map(product => product[key]))];
+  };
+  
+  const generateCheckboxes = (values, container) => {
+    container.innerHTML = '';
+    values.forEach(value =>{
+      const label = document.createElement('label');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.value = value;
+      checkbox.id  = 'filter-${value}';
+      label.setAttribute('for', 'filter-${value}');
+      label.textContent = value;
+      label.prepend(checkbox);
+      container.appendChild(label);
+    });
+  };
+
+  const uniqueColors = getUniqueValues(products, 'color');
+  generateCheckboxes(uniqueColors, colorCheckboxes);
+  const uniqueBrands = getUniqueValues(products, 'marca');
+  generateCheckboxes(uniqueBrands, brandCheckboxes);
+});
+
+/*------*/
+
 document.getElementById('filter-btn').addEventListener('click', () => {
   const modal = document.querySelector('.filter-modal');
   modal.style.display = (modal.style.display === "flex") ? "none" : "flex";
@@ -17,7 +54,7 @@ const showProducts = (productsToShow = products) => {
 
   if (productsToShow.length === 0) {
     productList.innerHTML = '<p class="no-products">No hay productos que coincidan con los filtros seleccionados.<br>Estos son algunos productos disponibles:</p>';
-    const suggestedProducts = showSuggestProducts(3); // Obtén 3 productos aleatorios
+    const suggestedProducts = showSuggestProducts(3); 
 
     suggestedProducts.forEach(product => {
       const productElement = document.createElement('div');
